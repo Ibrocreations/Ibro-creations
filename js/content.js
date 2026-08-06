@@ -69,10 +69,10 @@ window.SITE_CONTENT = {
             placeholder: true,
           },
           {
-            title: "The Riviera Itinerary",
+            title: "Editorial Brochure",
             category: "Booklet Spread",
-            description: "A sample eight-day itinerary booklet spread for a boutique travel agency.",
-            image: "assets/img/portfolio/travel-03.svg",
+            description: "A sample seven-day itinerary booklet spread for an outgoing travel agency.",
+            image: "assets/img/portfolio/travel-03.webp",
             placeholder: true,
           },
           {
