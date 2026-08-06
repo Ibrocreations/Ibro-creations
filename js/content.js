@@ -59,6 +59,8 @@ window.SITE_CONTENT = {
             category: "Destination Imagery",
             description: "Golden-hour coastline visuals for a Mediterranean DMC campaign.",
             image: "assets/img/portfolio/travel-011.webp",
+            "assets/img/portfolio/travel-01b.webp",
+            "assets/img/portfolio/travel-01c.webp",
             placeholder: false,
           },
           {
