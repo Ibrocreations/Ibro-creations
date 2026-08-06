@@ -72,7 +72,7 @@ window.SITE_CONTENT = {
             title: "Editorial Brochure",
             category: "Booklet Spread",
             description: "A sample seven-day itinerary booklet spread for an outgoing travel agency.",
-            image: "assets/img/portfolio/travel-033.webp",
+            image: "assets/img/portfolio/travel-0333.webp",
             placeholder: true,
           },
           {
