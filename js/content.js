@@ -65,7 +65,7 @@ window.SITE_CONTENT = {
             title: "Desert Horizons — Cinematic Stills",
             category: "AI Video Production",
             description: "Frame grabs from a cinematic AI video reel for a luxury desert expedition through Southern Algeria.",
-            image: "assets/img/portfolio/travel-02.webp",
+            image: "assets/img/portfolio/travel-022.webp",
             placeholder: true,
           },
           {
