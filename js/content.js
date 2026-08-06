@@ -58,7 +58,7 @@ window.SITE_CONTENT = {
             title: "Coastal Escape — Destination Series",
             category: "Destination Imagery",
             description: "Golden-hour coastline visuals for a Mediterranean DMC campaign.",
-            image: "assets/img/portfolio/travel-01.webp",
+            image: "assets/img/portfolio/travel-011.webp",
             placeholder: true,
           },
           {
