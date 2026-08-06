@@ -55,7 +55,7 @@ window.SITE_CONTENT = {
         intro: "I create AI-powered visual content that helps Travel Agencies, Destination Management Companies (DMCs), Tour Operators, and luxury hospitality brands sell destinations through compelling storytelling.",
         items: [
           {
-            title: "Coastal Escape — Destination Series",
+            title: "Coastal Escape — Destination Compaign",
             category: "Destination Imagery",
             description: "Golden-hour coastline visuals for a Mediterranean DMC campaign.",
             image: "assets/img/portfolio/travel-011.webp",
@@ -63,9 +63,9 @@ window.SITE_CONTENT = {
           },
           {
             title: "Desert Horizons — Cinematic Stills",
-            category: "AI Video Stills",
-            description: "Frame grabs from a cinematic AI video reel for a desert-luxury tour operator.",
-            image: "assets/img/portfolio/travel-02.svg",
+            category: "AI Video Production",
+            description: "Frame grabs from a cinematic AI video reel for a luxury desert expedition through Southern Algeria.",
+            image: "assets/img/portfolio/travel-02.webp",
             placeholder: true,
           },
           {
