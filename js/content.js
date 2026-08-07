@@ -79,7 +79,7 @@ window.SITE_CONTENT = {
             title: "La Gazelle d'Or Resort — Web Mockup",
             category: "Website Content",
             description: "Homepage visual direction and imagery for a luxury resort website.",
-            image: "assets/img/portfolio/travel-04.webp",
+            image: "assets/img/portfolio/travel-044.webp",
             placeholder: false,
           },
           {
