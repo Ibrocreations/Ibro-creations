@@ -76,10 +76,10 @@ window.SITE_CONTENT = {
             placeholder: false,
           },
           {
-            title: "Amara Resorts — Web Mockup",
+            title: "La Gazelle d'Or Resort — Web Mockup",
             category: "Website Content",
-            description: "Homepage visual direction and imagery for a luxury resort DMC website.",
-            image: "assets/img/portfolio/travel-04.svg",
+            description: "Homepage visual direction and imagery for a luxury resort website.",
+            image: "assets/img/portfolio/travel-04.webp",
             placeholder: false,
           },
           {
