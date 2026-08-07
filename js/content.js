@@ -86,7 +86,7 @@ window.SITE_CONTENT = {
             title: "Highland Trails — Landscape Series",
             category: "Destination Imagery",
             description: "Editorial landscape set for a mountain tourism board.",
-            image: "assets/img/portfolio/travel-05.svg",
+            image: "assets/img/portfolio/travel-05.webp",
             placeholder: false,
           },
           {
