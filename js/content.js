@@ -93,7 +93,7 @@ window.SITE_CONTENT = {
             title: "Old Town Evenings",
             category: "AI Video Stills",
             description: "Warm-light architectural stills for a heritage-city tour brand.",
-            image: "assets/img/portfolio/travel-06.svg",
+            video: "https://youtube.com/shorts/mxuySJRoSKY?si=HilBuXs7K03mcPMg",
             placeholder: false,
           },
         ],
