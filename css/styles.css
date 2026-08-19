@@ -397,7 +397,8 @@ section { position: relative; }
   overflow: hidden;
   background: var(--beige);
 }
-.work-card-media img {
+.work-card-media img,
+.work-card-media video {
   width: 100%;
   height: 100%;
   object-fit: cover;
