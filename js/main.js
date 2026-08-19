@@ -32,20 +32,42 @@
 
   /* ---------- Render Work Grids ---------- */
   function cardHTML(item) {
+    const mediaHTML = item.video
+        ? `
+            <video
+                class="work-card-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                poster="${item.image}"
+            >
+                <source src="${item.video}" type="video/webm">
+            </video>
+        `
+        : `
+            <img
+                src="${item.image}"
+                alt="${item.title}"
+                loading="lazy"
+            >
+        `;
+
     return `
-      <article class="work-card">
-        <div class="work-card-media">
-          <img src="${item.image}" alt="${item.title}" loading="lazy" />
-          ${item.placeholder ? '<span class="placeholder-tag">Placeholder</span>' : ""}
-        </div>
-        <div class="work-card-body">
-          <span class="work-card-category">${item.category}</span>
-          <h3 class="work-card-title">${item.title}</h3>
-          <p class="work-card-desc">${item.description}</p>
-        </div>
-      </article>
+        <article class="work-card">
+            <div class="work-card-media">
+                ${mediaHTML}
+                ${item.placeholder ? `<span class="placeholder-tag">Placeholder</span>` : ""}
+            </div>
+            <div class="work-card-body">
+                <span class="work-card-category">${item.category}</span>
+                <h3 class="work-card-title">${item.title}</h3>
+                <p class="work-card-desc">${item.description}</p>
+            </div>
+        </article>
     `;
-  }
+}
 
   document.getElementById("work-grid-travel").innerHTML = C.work.tabs.travel.items.map(cardHTML).join("");
   document.getElementById("work-grid-brand").innerHTML = C.work.tabs.brand.items.map(cardHTML).join("");
