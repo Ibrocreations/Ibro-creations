@@ -266,7 +266,7 @@ section { position: relative; }
   position: relative;
   z-index: 2;
   color: var(--ivory);
-  padding-top: calc(84px + var(--space-10));
+  padding-top: calc(84px + var(--space-8));
   width: 100%;
   max-width: 1200px;
 }
