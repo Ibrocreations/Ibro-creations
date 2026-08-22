@@ -330,6 +330,7 @@ section { position: relative; }
   grid-template-columns: 1fr 1fr;
   gap: var(--space-12);
   align-items: start;
+  text-align: justify;
 }
 .intro-grid h2 {
   font-size: 40px;
