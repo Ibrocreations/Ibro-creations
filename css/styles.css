@@ -292,6 +292,24 @@ section { position: relative; }
   gap: 12px;
   flex-wrap: wrap;
 }
+.hero-eyebrow {
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.hero-trust {
+  margin-top: 44px;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: rgba(252,250,247,0.6);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.hero-trust .dot { opacity: 0.5; }
+@media (max-width: 640px) {
+  .hero-trust { gap: 8px; font-size: 12px; }
+}
 .scroll-cue {
   position: absolute;
   bottom: var(--space-4);

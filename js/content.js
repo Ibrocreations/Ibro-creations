@@ -28,10 +28,12 @@ window.SITE_CONTENT = {
   ],
 
   hero: {
-    headline: "Destination visual storytelling",
-    supportingText: "Tourism expertise. AI-powered production. Visuals designed to inspire travel.",
+    eyebrow: "AI-Powered Destination Visuals",
+    headline: "Every destination has a story waiting to inspire travelers.",
+    supportingText: "Tourism expertise meets AI-powered production — cinematic imagery that makes travelers imagine themselves there.",
     ctaPrimary: { label: "View My Work", href: "#work" },
     ctaSecondary: { label: "Let's Work Together", href: "#contact" },
+    trustStrip: ["Tourism Boards", "Travel Agencies", "DMCs", "Cruise Lines", "Hotels & Resorts"],
   },
 
   intro: {
