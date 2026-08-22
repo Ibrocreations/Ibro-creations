@@ -273,6 +273,14 @@ section { position: relative; }
   font-size: clamp(42px, 6.5vw, 88px);
   max-width: 920px;
   color: var(--ivory);
+  }
+.hero-supporting {
+  font-size: clamp(16px, 1.5vw, 22px);
+  line-height: 1.5;
+  max-width: 650px;
+  margin-top: 20px;
+  color: var(--ivory);
+}
 }
 .hero-actions {
   margin-top: var(--space-8);

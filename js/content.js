@@ -7,9 +7,9 @@
 window.SITE_CONTENT = {
   brand: {
     name: "Ibro Creations",
-    tagline: "AI-Powered Visual Storytelling for Brands That Sell Experiences",
-    email: "hello@ibrocreations.online",
-    whatsapp: "https://wa.me/213000000000",
+    tagline: "Destination Visual Storytelling. Tourism expertise. AI-powered production. Visuals designed to inspire travel.",
+    email: "ibrocreation@gmail.com",
+    whatsapp: "https://wa.me/213000000",
     location: "Algeria — working with clients globally",
     social: {
       instagram: "https://instagram.com/ibrocreations",
@@ -28,14 +28,15 @@ window.SITE_CONTENT = {
   ],
 
   hero: {
-    headline: "AI-Powered Visual Storytelling for Brands That Sell Experiences",
+    headline: "Destination visual storytelling",
+    supportingText: "Tourism expertise. AI-powered production. Visuals designed to inspire travel.",
     ctaPrimary: { label: "View My Work", href: "#work" },
     ctaSecondary: { label: "Let's Work Together", href: "#contact" },
   },
 
   intro: {
     eyebrow: "Studio",
-    heading: "The AI is the tool. Taste is the product.",
+    heading: "The AI is the tool. Taste is the Product.",
     body: "Ibro Creations is a creative studio specializing in AI-powered visual content — for travel companies, Destination Management Companies, tour operators, and select lifestyle brands. Every image, film still, and page is directed with an editorial eye, so the work reads as considered and human, never generated.",
     skills: [
       "AI Image Generation",
