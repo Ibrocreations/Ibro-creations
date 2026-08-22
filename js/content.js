@@ -62,9 +62,9 @@ window.SITE_CONTENT = {
             placeholder: false,
           },
           {
-            title: "Desert Horizons — Cinematic Stills",
+            title: "Desert Horizons — Cinematic Portrait",
             category: "AI Video Production",
-            description: "Frame grabs from a cinematic AI video reel for a luxury desert expedition through Southern Algeria.",
+            description: "Cinematic AI footage capturing a Tuareg-inspired desert scene at sunset, with camel silhouettes and warm Saharan ligh through Southern Algeria.",
             video: "assets/img/portfolio/travel-0222.webm",
             placeholder: false,
           },
@@ -76,9 +76,9 @@ window.SITE_CONTENT = {
             placeholder: false,
           },
           {
-            title: "La Gazelle d'Or Resort — Web Mockup",
-            category: "Website Content",
-            description: "Homepage visual direction and imagery for a luxury resort website.",
+            title: "Amara Resort — Web Mockup",
+            category: "Website Visuals",
+            description: "Luxury hotel imagery designed for a premium booking experience.",
             image: "assets/img/portfolio/travel-044.webp",
             placeholder: false,
           },
@@ -92,7 +92,7 @@ window.SITE_CONTENT = {
           {
             title: "Old Town Evenings",
             category: "AI Video Stills",
-            description: "Warm-light architectural stills for a heritage-city tour brand.",
+            description: "Vertical visuals for social media campaigns and destination advertising.",
             video: "assets/img/portfolio/travel-066.webm",
             placeholder: false,
           },
