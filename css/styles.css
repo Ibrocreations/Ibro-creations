@@ -527,6 +527,7 @@ section { position: relative; }
   grid-template-columns: 0.9fr 1.1fr;
   gap: var(--space-12);
   align-items: center;
+  text-align: justify;
 }
 .approach-media {
   aspect-ratio: 4/5;
