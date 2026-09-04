@@ -151,7 +151,7 @@
         throw new Error("Form submission failed");
       }
     } catch (err) {
-      alert("Something went wrong sending your message. Please email ibrocreations.dz@gmail.com directly.");
+      alert("Something went wrong sending your message. Please email hello@ibrocreations.online directly.");
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = "Send Message";
