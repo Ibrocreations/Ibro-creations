@@ -1,188 +1,367 @@
 /**
- * Ibro Creations — editable content data
- * Update text, image paths, and links here. No layout code needs to change.
- * Replace `image` paths with real files in /assets/img/portfolio/ once ready.
+ * Ibro Creations — site behavior
+ * Renders portfolio & services from js/content.js,
+ * handles tabs, nav, scroll reveal, and contact form submission.
  */
 
-window.SITE_CONTENT = {
-  brand: {
-    name: "Ibro Creations",
-    tagline: "Destination Visual Storytelling. Tourism expertise. AI-powered production. Visuals designed to inspire travel.",
-    email: "ibrocreation@gmail.com",
-    whatsapp: "https://wa.me/213000000",
-    location: "Algeria — working with clients globally",
-    social: {
-      instagram: "https://instagram.com/ibrocreations",
-      tiktok: "https://tiktok.com/@ibrocreations",
-      linkedin: "https://linkedin.com/company/ibrocreations",
-      upwork: "https://upwork.com/freelancers/ibrocreations",
+(function () {
+  const C = window.SITE_CONTENT;
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* ---------- Nav: scroll shadow + mobile toggle ---------- */
+
+  const nav = document.getElementById("site-nav");
+
+  const onScroll = () =>
+    nav.classList.toggle("scrolled", window.scrollY > 8);
+
+  onScroll();
+
+  window.addEventListener("scroll", onScroll, {
+    passive: true
+  });
+
+  const navToggle = document.getElementById("nav-toggle");
+  const navLinks = document.getElementById("nav-links");
+
+  navToggle.addEventListener("click", () =>
+    navLinks.classList.toggle("open")
+  );
+
+  navLinks.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () =>
+      navLinks.classList.remove("open")
+    )
+  );
+
+
+  /* ---------- Icons ---------- */
+
+  const ICONS = {
+
+    image:
+      '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="1.8"/><path d="M21 15l-5-5-9 9"/></svg>',
+
+    video:
+      '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M17 10l4-2.5v9L17 14"/></svg>',
+
+    "book-open":
+      '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 6c-1.5-1.2-4-2-8-2v14c4 0 6.5.8 8 2 1.5-1.2 4-2 8-2V4c-4 0-6.5 2-8 2z"/><path d="M12 6v14"/></svg>',
+
+    "layout-grid":
+      '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>',
+
+    sparkles:
+      '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v5M12 16v5M4 12h5M15 12h5"/><path d="M6.5 6.5l2.5 2.5M15 15l2.5 2.5M17.5 6.5L15 9M9 15l-2.5 2.5"/></svg>'
+
+  };
+
+
+  /* ---------- Render Work Grids ---------- */
+
+  function cardHTML(item) {
+
+    const mediaHTML = item.video
+
+      ? `
+        <video
+          class="work-card-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster="${item.image}"
+        >
+          <source src="${item.video}" type="video/webm">
+        </video>
+      `
+
+      : `
+        <img
+          src="${item.image}"
+          alt="${item.title}"
+          loading="lazy"
+        >
+      `;
+
+    return `
+      <article class="work-card">
+
+        <div class="work-card-media">
+
+          ${mediaHTML}
+
+          ${
+            item.placeholder
+              ? `<span class="placeholder-tag">Placeholder</span>`
+              : ""
+          }
+
+        </div>
+
+        <div class="work-card-body">
+
+          <span class="work-card-category">
+            ${item.category}
+          </span>
+
+          <h3 class="work-card-title">
+            ${item.title}
+          </h3>
+
+          <p class="work-card-desc">
+            ${item.description}
+          </p>
+
+        </div>
+
+      </article>
+    `;
+  }
+
+
+  document.getElementById("work-grid-travel").innerHTML =
+    C.work.tabs.travel.items.map(cardHTML).join("");
+
+  document.getElementById("work-grid-brand").innerHTML =
+    C.work.tabs.brand.items.map(cardHTML).join("");
+
+
+  /* ---------- Render Services ---------- */
+
+  document.getElementById("services-grid").innerHTML =
+    C.services.items.map(
+
+      (s) => `
+        <div class="service-card reveal">
+
+          <div class="service-icon">
+            ${ICONS[s.icon] || ""}
+          </div>
+
+          <h3>${s.title}</h3>
+
+          <p>${s.description}</p>
+
+        </div>
+      `
+
+    ).join("");
+
+
+  /* ---------- Work Tabs ---------- */
+
+  const tabBtns = document.querySelectorAll(".tab-btn");
+  const panels = document.querySelectorAll(".work-panel");
+
+
+  function activateTab(tabId) {
+
+    tabBtns.forEach((btn) => {
+
+      const active = btn.dataset.tab === tabId;
+
+      btn.classList.toggle("active", active);
+
+      btn.setAttribute("aria-selected", active);
+
+    });
+
+
+    panels.forEach((panel) =>
+      panel.classList.toggle(
+        "active",
+        panel.dataset.panel === tabId
+      )
+    );
+
+  }
+
+
+  tabBtns.forEach((btn) =>
+    btn.addEventListener("click", () =>
+      activateTab(btn.dataset.tab)
+    )
+  );
+
+
+  /* ---------- Deep-link support ---------- */
+
+  function handleHashTab() {
+
+    const hash = window.location.hash;
+
+    if (hash === "#work-travel") {
+      activateTab("travel");
+    }
+
+    if (hash === "#work-brand") {
+      activateTab("brand");
+    }
+
+  }
+
+
+  window.addEventListener("hashchange", handleHashTab);
+
+  handleHashTab();
+
+
+  /* ---------- Scroll Reveal ---------- */
+
+  const revealEls =
+    document.querySelectorAll(
+      ".reveal, .work-card, .service-card"
+    );
+
+  revealEls.forEach((el) =>
+    el.classList.add("reveal")
+  );
+
+
+  const observer = new IntersectionObserver(
+
+    (entries) => {
+
+      entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+
+          entry.target.classList.add("is-visible");
+
+          observer.unobserve(entry.target);
+
+        }
+
+      });
+
     },
-  },
 
-  nav: [
-    { label: "Work", href: "#work" },
-    { label: "Travel & DMC", href: "#work-travel" },
-    { label: "Brand & UGC", href: "#work-brand" },
-    { label: "About", href: "#about" },
-    { label: "Contact", href: "#contact" },
-  ],
+    {
+      threshold: 0.12
+    }
 
-  hero: {
-    eyebrow: "AI-Powered Destination Visuals",
-    headline: "Every destination has a story waiting to inspire travelers.",
-    supportingText: "Tourism expertise meets AI-powered production — cinematic imagery that makes travelers imagine themselves there.",
-    ctaPrimary: { label: "View My Work", href: "#work" },
-    ctaSecondary: { label: "Let's Work Together", href: "#contact" },
-    trustStrip: ["Tourism Boards", "Travel Agencies", "DMCs", "Cruise Lines", "Hotels & Resorts"],
-  },
+  );
 
-  intro: {
-    eyebrow: "Studio",
-    heading: "The AI is the tool. Taste is the Product.",
-    body: "Ibro Creations is a creative studio specializing in AI-powered visual content — for travel companies, Destination Management Companies, tour operators, and select lifestyle brands. Every image, film still, and page is directed with an editorial eye, so the work reads as considered and human, never generated.",
-    skills: [
-      "AI Image Generation",
-      "AI Video Generation",
-      "Content Design",
-      "Booklet & Print Design",
-    ],
-  },
 
-  work: {
-    heading: "Selected Work",
-    subheading: "A growing collection of visual stories — placeholders below will be swapped for finished projects.",
-    tabs: {
-      travel: {
-        id: "travel",
-        label: "Travel & DMC",
-        intro: "I create AI-powered visual content that helps Travel Agencies, Destination Management Companies (DMCs), Tour Operators, and luxury hospitality brands sell destinations through compelling storytelling.",
-        items: [
-          {
-            title: "Coastal Escape — Destination Compaign",
-            category: "Destination Imagery",
-            description: "Golden-hour coastline visuals for a Mediterranean DMC campaign.",
-            image: "assets/img/portfolio/travel-011.webp",
-            placeholder: false,
-          },
-          {
-            title: "Desert Horizons — Cinematic Portrait",
-            category: "AI Video Production",
-            description: "Cinematic AI footage capturing a Tuareg-inspired desert scene at sunset, with camel silhouettes and warm Saharan ligh through Southern Algeria.",
-            video: "assets/img/portfolio/travel-0222.webm",
-            placeholder: false,
-          },
-          {
-            title: "Editorial Brochure",
-            category: "Booklet Spread",
-            description: "A sample seven-day itinerary booklet spread for an outgoing travel agency.",
-            image: "assets/img/portfolio/travel-0333.webp",
-            placeholder: false,
-          },
-          {
-            title: "Amara Resort — Web Mockup",
-            category: "Website Visuals",
-            description: "Luxury hotel imagery designed for a premium booking experience.",
-            image: "assets/img/portfolio/travel-044.webp",
-            placeholder: false,
-          },
-          {
-            title: "Highland Trails — Landscape Series",
-            category: "Destination Imagery",
-            description: "Editorial landscape set for a mountain tourism board.",
-            image: "assets/img/portfolio/travel-05.webp",
-            placeholder: false,
-          },
-          {
-            title: "Old Town Evenings",
-            category: "AI Video Stills",
-            description: "Vertical visuals for social media campaigns and destination advertising.",
-            video: "assets/img/portfolio/travel-066.webm",
-            placeholder: false,
-          },
-        ],
-      },
-      brand: {
-        id: "brand",
-        label: "Brand & UGC",
-        intro: "AI-driven UGC-style content for fashion, food, and cosmetic brands looking for authentic, scroll-stopping visuals.",
-        items: [
-          {
-            title: "Linen & Light — Lookbook",
-            category: "Fashion",
-            description: "UGC-style lookbook set for a linen fashion label's summer drop.",
-            image: "assets/img/portfolio/brand-01.svg",
-            placeholder: true,
-          },
-          {
-            title: "Table for Two",
-            category: "Food",
-            description: "Warm, natural-light food styling for a restaurant's social feed.",
-            image: "assets/img/portfolio/brand-02.svg",
-            placeholder: true,
-          },
-          {
-            title: "Bare Skin — Product Story",
-            category: "Cosmetics",
-            description: "Editorial product photography for a clean-beauty skincare line.",
-            image: "assets/img/portfolio/brand-03.svg",
-            placeholder: true,
-          },
-          {
-            title: "Morning Ritual",
-            category: "UGC",
-            description: "Authentic lifestyle UGC set for a cosmetics brand's launch campaign.",
-            image: "assets/img/portfolio/brand-04.svg",
-            placeholder: true,
-          },
-        ],
-      },
-    },
-  },
+  revealEls.forEach((el) =>
+    observer.observe(el)
+  );
 
-  services: {
-    heading: "Services",
-    subheading: "What I offer, in short.",
-    items: [
-      {
-        title: "AI Photography & Visuals",
-        description: "Editorial-grade imagery for destinations, hospitality, and lifestyle brands.",
-        icon: "image",
-      },
-      {
-        title: "AI Video Production",
-        description: "Cinematic short-form video content built for travel and brand storytelling.",
-        icon: "video",
-      },
-      {
-        title: "Travel Booklets & Itinerary Design",
-        description: "Printed and digital booklets that make itineraries feel like an experience.",
-        icon: "book-open",
-      },
-      {
-        title: "Website & Social Content",
-        description: "Visual direction and content sets for websites, social, and campaigns.",
-        icon: "layout-grid",
-      },
-      {
-        title: "UGC-Style Brand Content",
-        description: "Authentic, scroll-stopping visuals for fashion, food, and cosmetic brands.",
-        icon: "sparkles",
-      },
-    ],
-  },
 
-  about: {
-    heading: "Approach",
-    body: [
-      "My work sits at the intersection of artificial intelligence and artistic direction. The tools are AI — the eye is mine. Every project starts with a mood, a story, a feeling I want the viewer to leave with, and the visuals are built to serve that.",
-      "I keep the work editorial and warm rather than futuristic or synthetic-looking. Clients come back for the taste, not the technology.",
-    ],
-    location: "Based in Algeria, working with clients globally.",
-  },
+  /* =========================================================
+     CONTACT FORM — GOOGLE APPS SCRIPT
+     ========================================================= */
 
-  contact: {
-    heading: "Let's Work Together",
-    subheading: "Tell me about your brand and what you're trying to create. I typically reply within a day.",
-    projectTypes: ["Travel / DMC", "Brand / UGC", "Something else"],
-  },
-};
+  const form =
+    document.getElementById("contact-form");
+
+  const successBox =
+    document.getElementById("form-success");
+
+
+  /* Your Google Apps Script Web App URL */
+
+  const GOOGLE_APPS_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbw6tv9NGk_1FR6JyMOOaKjCXXNjP7SMpyhozMEuiHRuBND8P-ov6jfLl6cjqICn69evwA/exec";
+
+
+  form.addEventListener(
+    "submit",
+    async (e) => {
+
+      e.preventDefault();
+
+
+      const submitBtn =
+        form.querySelector(
+          'button[type="submit"]'
+        );
+
+
+      submitBtn.disabled = true;
+
+      submitBtn.textContent = "Sending...";
+
+
+      const formData =
+        new FormData(form);
+
+
+      const data = {
+
+        name:
+          formData.get("name") || "",
+
+        email:
+          formData.get("email") || "",
+
+        projectType:
+          formData.get("project-type") || "",
+
+        message:
+          formData.get("message") || ""
+
+      };
+
+
+      try {
+
+        await fetch(
+          GOOGLE_APPS_SCRIPT_URL,
+          {
+            method: "POST",
+
+            mode: "no-cors",
+
+            headers: {
+              "Content-Type":
+                "text/plain;charset=utf-8"
+            },
+
+            body:
+              JSON.stringify(data)
+          }
+        );
+
+
+        /* Show success message */
+
+        successBox.classList.add("show");
+
+        form.reset();
+
+
+        successBox.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+
+
+      } catch (error) {
+
+        console.error(
+          "Contact form error:",
+          error
+        );
+
+
+        alert(
+          "Something went wrong sending your message. Please email hello@ibrocreations.online directly."
+        );
+
+      } finally {
+
+        submitBtn.disabled = false;
+
+        submitBtn.textContent =
+          "Send Message";
+
+      }
+
+    }
+  );
+
+})();
